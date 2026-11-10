@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Post a ski job – Snowhire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#eef4f9;--card:#fff;--text:#0f2236;--muted:#61778b;--line:#dce7f0;--chip:#eaf2f9;--accent:#ff6a3d;--accent-h:#ee5524;--accent-t:#fff;--ink:#0b2540;--tile:#e3effa;--shadow:0 1px 2px rgba(15,34,54,.05),0 8px 24px rgba(15,34,54,.06);--glass:rgba(238,244,249,.85)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0a141f;--card:#122131;--text:#e9f1f8;--muted:#8fa4b8;--line:#223548;--chip:#1a2d41;--ink:#06101a;--tile:#1a2f45;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);--glass:rgba(10,20,31,.85)}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0a141f;--card:#122131;--text:#e9f1f8;--muted:#8fa4b8;--line:#223548;--chip:#1a2d41;--ink:#06101a;--tile:#1a2f45;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);--glass:rgba(10,20,31,.85)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+.hero{position:relative;overflow:hidden;color:#fff;text-align:center;padding:64px 20px 120px;background:linear-gradient(180deg,#0b2540 0%,#1d5f95 55%,#8cc3e6 100%)}
+.hero h1{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:clamp(36px,8vw,64px);margin:0 0 10px;letter-spacing:-.02em}
+.hero p{margin:0 auto;max-width:560px;font-size:clamp(15px,2.5vw,18px);opacity:.92}
+.hero .stats{display:flex;justify-content:center;gap:28px;margin-top:26px;flex-wrap:wrap}
+.stat b{display:block;font-family:Fraunces,Georgia,serif;font-size:28px}
+.stat span{font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.8}
+.mtn{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:110px;display:block}
+.flakes{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(2px 2px at 20% 30%,#fff8,transparent),radial-gradient(2px 2px at 70% 20%,#fff8,transparent),radial-gradient(1.5px 1.5px at 45% 60%,#fff6,transparent),radial-gradient(2px 2px at 85% 55%,#fff7,transparent),radial-gradient(1.5px 1.5px at 10% 70%,#fff6,transparent)}
+main{max-width:1060px;margin:-56px auto 0;padding:0 18px 40px;position:relative}
+.panel{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow);position:sticky;top:calc(env(safe-area-inset-top,0px) + 8px);z-index:5}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.search{flex:1 1 260px;position:relative}
+.search input{padding-left:38px}
+.search:before{content:"⌕";position:absolute;left:13px;top:50%;transform:translateY(-52%);font-size:19px;color:var(--muted)}
+input,select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text);font:inherit;font-size:15px}
+input:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px}
+.sel{flex:0 1 190px}
+.pills{display:flex;gap:8px;margin-top:12px;overflow-x:auto;padding-bottom:2px}
+.pill{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:7px 14px;font:inherit;font-size:14px;cursor:pointer;white-space:nowrap}
+.pill small{color:var(--muted);margin-left:4px}
+.pill[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pill[aria-pressed="true"] small{color:#b9cde0}
+.count{margin:22px 4px 12px;color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.top{display:flex;gap:12px;align-items:flex-start}
+.tile{flex:0 0 46px;height:46px;border-radius:12px;background:var(--tile);display:grid;place-items:center;font-size:24px}
+.card h3{margin:0;font-size:17px;line-height:1.3;font-weight:600}
+.meta{color:var(--muted);font-size:14px;margin-top:2px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--chip);border-radius:999px;padding:2px 10px;font-size:12px;color:var(--muted)}
+.chip.pay{background:#dff6e8;color:#14683a;font-weight:600}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chip.pay{background:#123a27;color:#7fe0a8}}
+:root[data-theme="dark"] .chip.pay{background:#123a27;color:#7fe0a8}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto}
+.src{font-size:12px;color:var(--muted)}
+.apply{background:var(--accent);color:var(--accent-t);text-decoration:none;padding:9px 18px;border-radius:11px;font-weight:600;font-size:14px;white-space:nowrap}
+.apply:hover{background:var(--accent-h)}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:56px 0}
+.sk{height:130px;border-radius:16px;background:linear-gradient(90deg,var(--line),var(--card),var(--line));background-size:200% 100%;animation:sh 1.3s infinite}
+@keyframes sh{to{background-position:-200% 0}}
+.note{font-size:13px;color:var(--muted);text-align:center;margin:30px auto 0;max-width:640px}
+
+.nav{position:absolute;top:calc(env(safe-area-inset-top,0px) + 16px);right:18px;z-index:3}
+.nav a{color:#fff;text-decoration:none;font-weight:600;font-size:14px;border:1px solid #ffffff88;border-radius:999px;padding:8px 16px;background:#ffffff1f}
+.nav a:hover{background:#ffffff38}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:8px 0 26px}
+@media(max-width:820px){.plans{grid-template-columns:1fr}}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
+.plan.hot{border-color:var(--accent);border-width:2px}
+.plan h3{margin:0;font-family:Fraunces,Georgia,serif;font-size:22px}
+.price{font-size:30px;font-weight:700}.price small{font-size:13px;color:var(--muted);font-weight:400}
+.plan ul{margin:4px 0 8px;padding-left:18px;color:var(--muted);font-size:14px}
+.btn{display:block;text-align:center;background:var(--accent);color:var(--accent-t);text-decoration:none;padding:11px 18px;border-radius:11px;font-weight:600;border:0;font:inherit;font-weight:600;cursor:pointer;width:100%}
+.btn.alt{background:var(--chip);color:var(--text)}
+.formcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+.formcard h2,.sect{font-family:Fraunces,Georgia,serif;margin:0 0 4px}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+@media(max-width:700px){.fg{grid-template-columns:1fr}}
+.fg label{display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--muted);font-weight:500}
+.fg .full{grid-column:1/-1}
+textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text);font:inherit;font-size:15px;min-height:110px;resize:vertical}
+.msg{margin-top:14px;padding:12px 14px;border-radius:12px;font-size:14px;display:none}
+.msg.ok{display:block;background:#dff6e8;color:#14683a}.msg.err{display:block;background:#fde3de;color:#9a2a12}
+.steps{display:flex;gap:12px;flex-wrap:wrap;margin:6px 0 22px;color:var(--muted);font-size:14px}
+.steps span{background:var(--chip);border-radius:999px;padding:5px 12px}
+.pagehead{padding:56px 20px 110px}
+</style></head>
+<body>
+<section class="hero pagehead"><div class="flakes"></div>
+<div class="nav"><a href="index.html">← Browse jobs</a></div>
+<h1>Post a ski job</h1>
+<p>Reach seasonal workers looking for work at mountains around the world.</p>
+<svg class="mtn" viewBox="0 0 1200 110" preserveAspectRatio="none" aria-hidden="true"><path d="M0 110V70L120 30l90 38 110-50 130 62 120-48 140 56 120-58 130 52 110-40 130 48V110z" fill="#cfe3f2" opacity=".55"/><path d="M0 110V88l150-40 110 36 150-54 140 58 170-48 130 40 150-46 200 54V110z" fill="var(--bg)"/></svg>
+</section>
+<main>
+<div class="plans">
+<div class="plan"><h3>Standard</h3><div class="price">$40 <small>/ listing</small></div><ul><li>Listed for 60 days</li><li>Filterable by region and type</li><li>Direct apply link</li></ul><a class="btn alt" data-plan="standard" href="#" target="_blank" rel="noopener">Pay with card</a></div>
+<div class="plan hot"><h3>Featured</h3><div class="price">$75 <small>/ listing</small></div><ul><li>Pinned to the top for 60 days</li><li>Highlighted card</li><li>Included in the newsletter</li></ul><a class="btn" data-plan="featured" href="#" target="_blank" rel="noopener">Pay with card</a></div>
+<div class="plan"><h3>Season pack</h3><div class="price">$200 <small>/ 10 listings</small></div><ul><li>10 listings, any time this season</li><li>Two featured slots</li><li>Employer logo</li></ul><a class="btn alt" data-plan="pack" href="#" target="_blank" rel="noopener">Pay with card</a></div>
+</div>
+<div class="steps"><span>1. Fill in the form</span><span>2. Pay by card</span><span>3. We review and publish within 2 business days</span></div>
+<form class="formcard" id="f">
+<h2>Job details</h2>
+<div class="fg">
+<label>Employer / resort<input name="employer" required></label>
+<label>Contact email<input name="email" type="email" required></label>
+<label>Job title<input name="title" required></label>
+<label>Location (town, country)<input name="location" required></label>
+<label>Region<select name="region" required><option>North America</option><option>Europe</option><option>Asia</option><option>Oceania</option><option>South America</option></select></label>
+<label>Job type<select name="category" required><option>Instruction</option><option>Lifts &amp; Mountain Ops</option><option>Ski Patrol</option><option>Hospitality</option><option>Retail &amp; Rental</option><option>Snowmaking</option><option>Terrain Park</option><option>Guest Services</option><option>Maintenance</option><option>Guiding</option><option>Childcare</option><option>Various</option></select></label>
+<label>Season<select name="season"><option>Northern winter</option><option>Southern winter</option></select></label>
+<label>Pay (optional)<input name="pay" placeholder="e.g. $21/hr"></label>
+<label class="full">Link where people apply<input name="url" type="url" placeholder="https://…" required></label>
+<label class="full">Short description<textarea name="description"></textarea></label>
+<label>Plan<select name="plan"><option value="standard">Standard – $40</option><option value="featured">Featured – $75</option><option value="pack">Season pack – $200</option></select></label>
+</div>
+<div class="msg" id="msg"></div>
+<div style="margin-top:16px"><button class="btn" type="submit">Submit job for review</button></div>
+</form>
+<p class="note">We review every listing before it goes live. Pay using the plan buttons above; your listing is published once payment and details are received.</p>
+</main>
+<script>
+// ===== EDIT THESE THREE THINGS =====
+const FORM_ENDPOINT = "";                       // e.g. "https://formspree.io/f/xxxxxxx"  (leave empty to use email instead)
+const FALLBACK_EMAIL = "you@example.com";       // used when FORM_ENDPOINT is empty
+const PAYMENT_LINKS = { standard: "", featured: "", pack: "" };   // Stripe Payment Links, e.g. "https://buy.stripe.com/xxxx"
+// ===================================
+document.querySelectorAll('[data-plan]').forEach(a=>{const l=PAYMENT_LINKS[a.dataset.plan];if(l)a.href=l;else{a.addEventListener('click',e=>{e.preventDefault();alert('Payments are not set up yet. Submit the form and we will send you a payment link.');});}});
+const show=(t,c)=>{const m=document.getElementById('msg');m.className='msg '+c;m.textContent=t;};
+document.getElementById('f').addEventListener('submit',async e=>{
+e.preventDefault();const d=Object.fromEntries(new FormData(e.target));
+if(FORM_ENDPOINT){
+try{const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d)});
+if(r.ok){e.target.reset();show('Thanks! We received your job and will be in touch by email.','ok');}else throw 0;}
+catch(x){show('Something went wrong. Please try again or email '+FALLBACK_EMAIL+'.','err');}
+}else{
+const body=Object.entries(d).map(([k,v])=>k+': '+v).join('\n');
+location.href='mailto:'+FALLBACK_EMAIL+'?subject='+encodeURIComponent('New ski job: '+d.title)+'&body='+encodeURIComponent(body);
+show('Your email app should open with the details filled in. Just press send.','ok');
+}});
+</script>
+</body></html>
